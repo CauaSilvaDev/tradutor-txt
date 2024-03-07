@@ -13,3 +13,8 @@ sudo apt update && sudo apt upgrade -y
 ```markdown
 sudo apt install translate-shell php
 ```
+# Passo 3: Ativar Extensão (php.ini)
+
+```markdown
+extension=fileinfo
+```
