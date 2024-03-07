@@ -8,8 +8,8 @@ Este arquivo PHP permite que os usuários enviem arquivos de texto para traduç�
 sudo apt update && sudo apt upgrade -y
 ```
 
-# Passo 2: Instalar repositorio (Linux)
+# Passo 2: Instalar Repositorio (Linux)
 
 ```markdown
-sudo apt install translate-shell
+sudo apt install translate-shell php
 ```
