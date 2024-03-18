@@ -6,10 +6,11 @@
     <title>Upload de Arquivo</title>
 </head>
 <body>
-    <h1>Upload de arquivo</h1>
+    <h1>Tradutor arquivo TXT</h1>
+    <p>Faça uplaod dos seus arquivos .txt e receba eles traduzido para portugues/BR.</p>
     <form method="post" enctype="multipart/form-data">
         <input type="file" name="files[]" id="file" multiple>
-        <button type="submit">Enviar</button>
+        <button type="submit">Enviar arquivo</button>
     </form>
 
     <br>
@@ -31,15 +32,15 @@
 
 <?php
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (!isset($_FILES["files"]["name"][0]) || $_FILES["files"]["error"][0] !== UPLOAD_ERR_OK) {
+        $files = $_FILES["files"];
+        
+        if (empty($files["name"][0]) || $files["error"][0] !== UPLOAD_ERR_OK) {
             echo "Nenhum arquivo foi enviado.";
             exit();
         }
     
-        $files = $_FILES["files"];
         echo "<h1>Baixar arquivo traduzido!</h1><br>";
     
-        // Loop through each file
         for ($i = 0; $i < count($files["name"]); $i++) {
             $file = array(
                 'name' => $files['name'][$i],
@@ -63,8 +64,10 @@
                         <br>
                     ";
                 } else {
-                    echo "Erro ao fazer upload do arquivo ou o arquivo não possui a extensão .txt!";
+                    echo "Erro ao fazer upload do arquivo!";
                 }
+            } else {
+                echo "Extensão do arquivo não permitido!";
             }
         }
     }
